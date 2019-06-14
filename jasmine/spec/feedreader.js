@@ -79,8 +79,8 @@ $(function () {
     });
         //tests to see if theres atleast one entry within the feed container
         it('should have atleast a single entry within the feed container', () => {
-            const feed = document.querySelector('.feed');
-            expect(feed.hasChildNodes()).toBe(true);
+            const feed_entry = document.querySelectorAll('.feed .entry');
+            expect(feed_entry.length).not.toBe(0);
         });
         
     });       
@@ -95,14 +95,16 @@ $(function () {
             loadFeed(0, function(){
                 const feed = document.querySelector('.feed');
                 feedOne = feed.innerHTML;
-                done();
+
+                loadFeed(1, function(){
+                    const feed = document.querySelector('.feed');
+                    feedTwo = feed.innerHTML;
+                    done();
+                });
+                
             });
 
-            loadFeed(1, function(){
-                const feed = document.querySelector('.feed');
-                feedTwo = feed.innerHTML;
-                done();
-            });
+            
         });
         // tests the 2 feeds to see if the content changed
         it('when new feed is loaded, content should change', () => {

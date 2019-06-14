@@ -1,5 +1,6 @@
 # Feed Reader Testing
 
+To run the application open the index.html file in your browser.
 To run the application successfully without any errors, the following steps should be taken:
 
 #Initial Entries
